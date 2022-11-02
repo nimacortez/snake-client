@@ -9,9 +9,9 @@ const connect = function () {
 
   // interpret incoming data as text
   conn.setEncoding("utf8");
-conn.on("data", (information) => {
+//conn.on("Move: up", (information) => {
   console.log(information);
-});
+//});
   return conn;
 };
 
