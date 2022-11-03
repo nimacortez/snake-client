@@ -1,18 +1,34 @@
-const setupInput = function () {
+let connection; 
+
+const setupInput = function(conn) {
+  connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
   stdin.resume();
-  stdin.on("data", handleUserInput);
-  
+  stdin.on("data", (key) => {
+    handleUserInput(key);
+  });
   return stdin;
 };
 
-const handleUserInput = function (data) {
-  console.log("This is working.", data);
-  if (data === "\u0003") {
+const handleUserInput = function (input) {
+  console.log("This is working.", input);
+  if (input === "\u0003") {
     process.exit();
-};
+  }
+  if (input === "w") {
+    connection.write("Move: up");
+  }
+  if (input === "d") {
+    connection.write("Move: right");
+  }
+  if (input === "s") {
+    connection.write("Move: down");
+  }
+  if (input === "a") {
+    connection.write("Move: left");
+  }
 };
 
 
