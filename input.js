@@ -6,11 +6,9 @@ const setupInput = function(conn) {
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
   stdin.resume();
-  stdin.on("data", (key) => {
-    handleUserInput(key);
-  });
+  stdin.on("data", handleUserInput);
   return stdin;
-};
+}
 
 const handleUserInput = function (input) {
   console.log("This is working.", input);
@@ -30,8 +28,5 @@ const handleUserInput = function (input) {
     connection.write("Move: left");
   }
 };
-
-
-setupInput();
 
 module.exports = { setupInput };
