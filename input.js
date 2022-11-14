@@ -12,6 +12,7 @@ const setupInput = function(conn) {
 
 const handleUserInput = function (input) {
   console.log("This is working.", input);
+  connection.write('Say: GO!');
   if (input === "\u0003") {
     process.exit();
   }
