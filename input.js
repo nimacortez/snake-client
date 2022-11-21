@@ -1,6 +1,6 @@
-let connection; 
+let connection;
 
-const setupInput = function(conn) {
+const setupInput = function (conn) {
   connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
@@ -8,11 +8,11 @@ const setupInput = function(conn) {
   stdin.resume();
   stdin.on("data", handleUserInput);
   return stdin;
-}
+};
 
 const handleUserInput = function (input) {
   console.log("This is working.", input);
-  connection.write('Say: GO!');
+  connection.write("Say: GO!");
   if (input === "\u0003") {
     process.exit();
   }
@@ -27,6 +27,9 @@ const handleUserInput = function (input) {
   }
   if (input === "a") {
     connection.write("Move: left");
+  }
+  if (input === "c") {
+    connection.write("Say: Be careful!");
   }
 };
 
